@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Clerk Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Override base font size for Clerk component to work correctly */
+        html, body {
+            font-size: 16px !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4">
+        <div class="max-w-md w-full">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                    Register
+                </h1>
+                <p class="text-gray-600">
+                    Create your account with Clerk
+                </p>
+            </div>
+
+            <!-- Clerk Sign-Up Component Container -->
+            <div id="clerk-auth" class="flex justify-center items-center" style="min-height: 500px; font-size: 16px;">
+                <!-- Loading spinner - shown while Clerk component loads -->
+                <div class="clerk-loading text-center">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+                    <p class="text-indigo-600 mt-4">Loading authentication...</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <a href="/index.html" class="text-sm text-gray-600 hover:text-gray-900">
+                    ← Back to home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clerk Configuration -->
+    <script>
+        console.log('📄 [Register] Page loaded');
+        // Make Clerk config available globally
+        window.clerkConfigVars = {
+            publishableKey: 'pk_test_YXBwYXJlbnQtZ2liYm9uLTY0LmNsZXJrLmFjY291bnRzLmRldiQ',
+            frontendApi: 'https://apparent-gibbon-64.clerk.accounts.dev'
+        };
+        console.log('✓ [Register] Clerk config set:', window.clerkConfigVars);
+    </script>
+
+    <!-- Load Clerk Sign-Up Handler -->
+    <script type="module" src="/clerk-sign-up.js"></script>
+</body>
+</html>

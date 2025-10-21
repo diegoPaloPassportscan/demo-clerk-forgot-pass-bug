@@ -1,0 +1,17 @@
+{
+  "name": "clerk-auth-demo",
+  "version": "1.0.0",
+  "description": "Simple Clerk authentication demo showcasing login and callback validation",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@clerk/clerk-js": "^5.99.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

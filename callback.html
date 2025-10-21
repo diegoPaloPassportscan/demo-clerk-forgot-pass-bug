@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback - Clerk Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center py-12 px-4">
+        <div class="max-w-2xl w-full">
+            
+            <!-- Header -->
+            <div id="auth-header" class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                    Validating Authentication
+                </h1>
+                <p class="text-gray-600">
+                    Processing your session...
+                </p>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="bg-white rounded-lg shadow-lg p-8">
+                <div class="space-y-6">
+                    <!-- Progress Steps -->
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-indigo-600"></div>
+                            <p id="auth-status" class="text-gray-700 font-medium">
+                                Initializing...
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Info Box -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+                        <p class="text-sm text-blue-800">
+                            <strong>What's happening:</strong><br>
+                            1. Checking for active Clerk session<br>
+                            2. Extracting session token (JWT)<br>
+                            3. Retrieving user information<br>
+                            4. Validating authentication<br>
+                            5. Redirecting to dashboard
+                        </p>
+                    </div>
+
+                    <!-- Console Log Notice -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <p class="text-sm text-gray-700">
+                            💡 <strong>Open your browser console</strong> to see the session data, token, and user object being logged.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error State (hidden by default) -->
+            <div id="error" class="bg-white rounded-lg shadow-lg p-8" style="display: none;">
+                <div class="text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+                        <svg class="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Authentication Failed</h3>
+                    <p id="error-message" class="text-gray-600 mb-6">
+                        An error occurred during authentication.
+                    </p>
+                    <div class="space-y-3">
+                        <a href="/sign-in.html" 
+                           class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg text-center transition duration-200">
+                            Try Again
+                        </a>
+                        <a href="/index.html" 
+                           class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg text-center transition duration-200">
+                            Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Clerk Configuration -->
+    <script>
+        window.clerkPublishableKey = 'pk_test_YXBwYXJlbnQtZ2liYm9uLTY0LmNsZXJrLmFjY291bnRzLmRldiQ';
+    </script>
+
+    <!-- Load Clerk Callback Handler -->
+    <script type="module" src="/clerk-callback.js"></script>
+</body>
+</html>
